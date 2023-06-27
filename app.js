@@ -1,4 +1,16 @@
 const dgram = require('node:dgram');
+const express = require('express');
+const app = express();
+app.use(express.json());
+
+
+app.get('/', (req,res)=>{
+    res.status(200).send({"msj":"hello from server"});
+})
+
+app.listen(80,()=>{
+    console.log('listening on port 80');
+})
 
 const server = dgram.createSocket('udp4');
 
