@@ -9,7 +9,7 @@ app.get('/', (req,res)=>{
 })
 
 app.listen(80,()=>{
-    console.log('listening on port 80');,
+    console.log('listening on port 80');
 })
 
 const server = dgram.createSocket('udp4');
