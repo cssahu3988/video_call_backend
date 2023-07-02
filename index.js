@@ -3,13 +3,27 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
+var calls = new Map();
 
 app.get('/', (req,res)=>{
     res.status(200).send({"msj":"hello from server"});
 })
 
+app.get('/initiatecall',(req,res)=>{
+  var user_name = req.query.user_name;
+  console.log(user_name);
+  console.log(req.ip);
+  if(!calls.has(`${user_name}`)){
+    calls.set(user_name,req.socket.remoteAddress)
+  }
+  else{
+    return res.status(400).send({"msj":"user name already exists"});
+  }
+  res.status(200).send({"msj":"call initiated"});
+});
+
 app.listen(5000,()=>{
-    console.log('http listening on port 80');
+    console.log('http listening on port 5000');
 })
 
 const server = dgram.createSocket('udp4');
