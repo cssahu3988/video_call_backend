@@ -8,7 +8,7 @@ app.get('/', (req,res)=>{
     res.status(200).send({"msj":"hello from server"});
 })
 
-app.listen(80,()=>{
+app.listen(5000,()=>{
     console.log('http listening on port 80');
 })
 
