@@ -1,16 +1,16 @@
 const dgram = require('node:dgram');
-// const express = require('express');
-// const app = express();
-// app.use(express.json());
+const express = require('express');
+const app = express();
+app.use(express.json());
 
 
-// app.get('/', (req,res)=>{
-    // res.status(200).send({"msj":"hello from server"});
-// })
+app.get('/', (req,res)=>{
+    res.status(200).send({"msj":"hello from server"});
+})
 
-// app.listen(3000,()=>{
-    // console.log('listening on port 3000');
-// })
+app.listen(80,()=>{
+    console.log('http listening on port 80');
+})
 
 const server = dgram.createSocket('udp4');
 
@@ -27,7 +27,7 @@ server.on('message', (msg, rinfo) => {
 
 server.on('listening', () => {
   const address = server.address();
-  console.log(`server listening ${address.address}:${address.port}`);
+  console.log(`udp server listening ${address.address}:${address.port}`);
 });
 
 server.bind(3000);
