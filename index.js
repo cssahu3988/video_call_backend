@@ -129,6 +129,7 @@ videoServer.on('message', async(msg, rinfo) => {
   var receiver_address = calls.get(rinfo.address+":"+rinfo.port);
   rinfo.address = receiver_address.split(":")[0];
   rinfo.port = receiver_address.split(":")[1];
+  console.log("video transmission "+msg.byteLength);
   sendPacket(msg, rinfo);
 });
 
